@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c "overmind s"
+    volumes:
+      - '.:/app'
+    ports:
+      - '5000:5000'
+    environment:
+      DATABASE_URL: postgres://postgres@db
+      OVERMIND_PROCFILE: Procfile.dev-server
+    depends_on:
+      - db
