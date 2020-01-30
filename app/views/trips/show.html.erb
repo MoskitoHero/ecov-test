@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<div><%= @trip.status %></div>
+
+<%= link_to 'Je monte en voiture !', start_trip_path(@trip), method: :put %>
+<%= link_to 'Annuler ma demande', cancel_trip_path(@trip), method: :put %>
+
+<%= link_to 'Back', trips_path %>

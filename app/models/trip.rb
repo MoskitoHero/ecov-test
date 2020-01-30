@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class Trip < ApplicationRecord
+  self.primary_key = 'uid'
+
   after_initialize :set_defaults, if: :new_record?
   before_validation :update_payment
   after_save :log_status, if: :saved_change_to_status?
+  validates_length_of :uid, is: 4, message: 'Trip ID must be 4 characters long'
+  validates_uniqueness_of :uid
 
   private
 

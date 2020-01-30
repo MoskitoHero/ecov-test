@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_024657) do
+ActiveRecord::Schema.define(version: 2020_01_29_215802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_01_29_024657) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "payment_data"
+    t.string "departure"
+    t.string "destination"
     t.index ["uid"], name: "index_trips_on_uid", unique: true
   end
 

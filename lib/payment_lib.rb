@@ -34,11 +34,6 @@ class PaymentLib
 
   private
 
-  def payment
-    @payment
-  end
-
-  def payment=(payment)
-    @payment = payment
-  end
+  attr_reader :payment
+  attr_writer :payment
 end
