@@ -3,19 +3,31 @@
 <% end %>
 
 <%= link_to new_trip_path do %>
-  <button class="ui primary button">
+  <button class="fluid ui primary button">
     <i class="car icon"></i>Nouveau Trajet
   </button>
 <% end %>
 
-<h3>Liste de mes Trajets :</h3>
-<div class="ui relaxed divided list">
+<h3>Liste de mes Trajets</h3>
+<div class="ui relaxed divided items">
   <% @trips.each do |trip| %>
     <div class="item">
-      <i class="large car middle aligned icon"></i>
+      <i class="big circular inverted car middle aligned icon <%= icon_color trip.status %>"></i>
       <div class="content">
         <%= link_to trip, class: :header do %><%= trip.departure %> - <%= trip.destination %><% end %>
         <div class="description"><%= trip.uid %> / Etat: <%= trip.status %></div>
+      </div>
+      <div>
+          <%= link_to trip do %>
+              <button class="ui button">
+                  <i class="external square alternate icon"></i>Consulter
+              </button>
+          <% end %>
+          <%= link_to trip, method: :delete, data: { confirm: 'Êtes-vous certain de vouloir supprimer ce Trajet ?' } do %>
+              <button class="ui button">
+                  <i class="trash icon"></i>Supprimer
+              </button>
+          <% end %>
       </div>
     </div>
   <% end %>

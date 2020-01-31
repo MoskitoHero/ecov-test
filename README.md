@@ -6,11 +6,13 @@ Voilà mon travail.
 
 ``` sh
 docker-compose build .
+docker-compose run web rake spec
 docker-compose up
 ```
 
-L'appli est accessible à `http://0.0.0.0:5000` et le moniteur RabbitMQ à
-`http://0.0.0.0:8080` (login/pass : `guest/guest`).
+L'appli est accessible à `http://0.0.0.0:5000`
+
+Le moniteur RabbitMQ à`http://0.0.0.0:8080` (login/pass : `guest/guest`)
 
 ## Remarques
 * J'ai préféré appeler le modèle "Trip". Par expérience, je préfère coder rails en
@@ -21,3 +23,4 @@ L'appli est accessible à `http://0.0.0.0:5000` et le moniteur RabbitMQ à
 * Tout n'est pas traduit, et/ou parfois c'est un peu à l'arrache de ce côté-là.
   J'ai préféré me concentrer sur le code ruby.
 * J'ai fait aussi une petite UI succinte avec semantic-ui
+* Les vues ne sont pas testées à 100%, par manque de temps

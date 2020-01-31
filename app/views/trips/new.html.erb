@@ -2,4 +2,8 @@
 
 <%= render 'form', trip: @trip %>
 
-<%= link_to 'Revenir à mes Trajets', trips_path %>
+<div class="ui divider"></div>
+
+<%= link_to trips_path do %>
+    <i class="left arrow icon"></i>Revenir à mes Trajets
+<% end %>

@@ -39,18 +39,22 @@
 
 <% if @trip.status != 'STARTED' %>
     <%= link_to start_trip_path(@trip), method: :put, id: :start do %>
-      <button class="ui primary button">
+      <button class="fluid ui primary button">
         <i class="car icon"></i>Je monte en voiture!
       </button>
     <% end %>
 <% end %>
+<br />
 <% if @trip.status != 'CANCELLED' %>
     <%= link_to cancel_trip_path(@trip), method: :put, id: :cancel do %>
-      <button class="ui red button">
+      <button class="fluid ui red button">
         <i class="undo icon"></i>Annuler ma demande
       </button>
     <% end %>
 <% end %>
 
+<div class="ui divider"></div>
 
-<%= link_to 'Revenir à mes Trajets', trips_path %>
+<%= link_to trips_path do %>
+    <i class="left arrow icon"></i>Revenir à mes Trajets
+<% end %>
