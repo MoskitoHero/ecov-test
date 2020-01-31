@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Trip, type: :model do
   before :each do
-    @trip = Trip.create
+    @trip = Trip.create(departure: 'Part-Dieu', destination: 'Perrache')
   end
 
   it 'status is set to "CREATED" on creation' do

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'trips/edit', type: :view do
   before(:each) do
-    @trip = assign(:trip, Trip.create!)
+    @trip = assign(:trip, Trip.create!(departure: 'Rouen', destination: 'Elboeuf'))
   end
 
   it 'renders the edit trip form' do

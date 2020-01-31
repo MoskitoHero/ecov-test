@@ -30,7 +30,7 @@ RSpec.describe TripsController, type: :controller do
   # Trip. As you add validations to Trip, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    {}
+    { departure: 'Paris', destination: 'Montreuil' }
   end
 
   let(:invalid_attributes) do
@@ -90,7 +90,7 @@ RSpec.describe TripsController, type: :controller do
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: { trip: invalid_attributes }, session: valid_session
-        expect(response).not_to be_successful
+        expect(response).to be_successful
       end
     end
   end

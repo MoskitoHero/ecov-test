@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+<div id="notice" class="ui green raised segment"><%= notice %></div>
+<% end %>
 
-<h1>Bienvenue sur Ecov !</h1>
-
-<%= link_to 'Nouveau Trajet', new_trip_path %>
+<%= link_to new_trip_path do %>
+  <button class="ui primary button">
+    <i class="car icon"></i>Nouveau Trajet
+  </button>
+<% end %>
 
 <h3>Liste de mes Trajets :</h3>
-
-<table>
-    <thead>
-        <th>Identifiant</th>
-        <th>Départ</th>
-        <th>Destination</th>
-        <th>Etat</th>
-    </thead>
-    <% @trips.each do |trip| %>
-    <tr>
-        <td><%= link_to trip.uid, trip %></td>
-        <td><%= trip.departure %>
-        <td><%= trip.destination %></td>
-        <td><%= trip.status %></td>
-    </tr>
-    <% end %>
-</table>
+<div class="ui relaxed divided list">
+  <% @trips.each do |trip| %>
+    <div class="item">
+      <i class="large car middle aligned icon"></i>
+      <div class="content">
+        <%= link_to trip, class: :header do %><%= trip.departure %> - <%= trip.destination %><% end %>
+        <div class="description"><%= trip.uid %> / Etat: <%= trip.status %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

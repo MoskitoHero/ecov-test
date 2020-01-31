@@ -1,16 +1,56 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+<div id="notice" class="ui green raised segment"><%= notice %></div>
+<% end %>
 
 <h1>Informations Trajet</h1>
-<ul>
-    <li>Départ: <%= @trip.departure %></li>
-    <li>Arrivée: <%= @trip.destination %></li>
-</ul>
 
-<div><%= @trip.status %></div>
+<div class="ui relaxed divided list">
+  <div class="item">
+    <div class="content">
+        <div class="header">
+            Départ
+        </div>
+        <div class="description">
+            <%= @trip.departure %>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="content">
+        <div class="header">
+            Destination
+        </div>
+        <div class="description">
+            <%= @trip.destination %>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="content">
+        <div class="header">
+            Etat
+        </div>
+        <div class="description">
+            <%= @trip.status %>
+        </div>
+    </div>
+  </div>
+</div>
 
 <% if @trip.status != 'STARTED' %>
-    <%= link_to 'Je monte en voiture !', start_trip_path(@trip), method: :put %>
+    <%= link_to start_trip_path(@trip), method: :put, id: :start do %>
+      <button class="ui primary button">
+        <i class="car icon"></i>Je monte en voiture!
+      </button>
+    <% end %>
 <% end %>
 <% if @trip.status != 'CANCELLED' %>
-    <%= link_to 'Annuler ma demande', cancel_trip_path(@trip), method: :put %>
+    <%= link_to cancel_trip_path(@trip), method: :put, id: :cancel do %>
+      <button class="ui red button">
+        <i class="undo icon"></i>Annuler ma demande
+      </button>
+    <% end %>
 <% end %>
+
+
+<%= link_to 'Revenir à mes Trajets', trips_path %>

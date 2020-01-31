@@ -6,8 +6,11 @@ class Trip < ApplicationRecord
   after_initialize :set_defaults, if: :new_record?
   before_validation :update_payment
   after_save :log_status, if: :saved_change_to_status?
-  validates_length_of :uid, is: 4, message: 'Trip ID must be 4 characters long'
+  validates_length_of :uid, is: 4, message: "L'identifiant de Trajet doit faire 4 caractères"
   validates_uniqueness_of :uid
+  validates :status, inclusion: { in: %w(CREATED STARTED CANCELLED),
+    message: "%{value} n'est pas un statut correct" }
+  validates :departure, :destination, presence: true
 
   private
 

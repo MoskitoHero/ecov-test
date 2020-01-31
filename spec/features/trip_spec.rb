@@ -6,12 +6,12 @@ RSpec.feature 'Trips', type: :feature do
   scenario 'User creates a new trip' do
     visit '/trips/new'
 
-    fill_in 'Departure', with: 'Poitiers'
-    fill_in 'Destination', with: 'Saint Benoit'
+    fill_in 'trip_departure', with: 'Poitiers'
+    fill_in 'trip_destination', with: 'Saint Benoit'
 
     click_button 'Créer ma Demande !'
 
-    expect(page).to have_text('Trip was successfully created')
+    expect(page).to have_text('Trajet créé avec succès')
     expect(page).to have_text('CREATED')
   end
 
@@ -19,7 +19,7 @@ RSpec.feature 'Trips', type: :feature do
     trip = Trip.create!(departure: 'Poitiers', destination: 'Saint Benoit')
     visit "/trips/#{trip.uid}"
 
-    click_link'Je monte en voiture !'
+    click_link 'start'
 
     expect(page).to have_text('Trajet créé avec succès')
     expect(page).to have_text('Poitiers')
@@ -31,7 +31,7 @@ RSpec.feature 'Trips', type: :feature do
     trip = Trip.create!(departure: 'Poitiers', destination: 'Saint Benoit')
     visit "/trips/#{trip.uid}"
 
-    click_link 'Annuler ma demande'
+    click_link 'cancel'
 
     expect(page).to have_text('Trajet annulé avec succès')
     expect(page).to have_text('Nouveau Trajet')

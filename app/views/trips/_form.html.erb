@@ -1,8 +1,7 @@
-<%= form_with(model: trip, local: true) do |form| %>
+<%= form_with(model: trip, local: true, class: 'ui form') do |form| %>
   <% if trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
-
+    <div id="error_explanation" class="ui red raised segment">
+      <h3><%= pluralize(trip.errors.count, "erreur") %> ont empêché l'enregistrement de ce Trajet :</h3>
       <ul>
         <% trip.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,13 +9,16 @@
       </ul>
     </div>
   <% end %>
-
-  <%= form.label :departure %>
+  <div class="field">
+  <%= form.label :departure, 'Départ' %>
   <%= form.text_field :departure, readonly: form.object.persisted? %>
-  <%= form.label :destination%>
+  </div>
+  <div class="field">
+  <%= form.label :destination, 'Destination' %>
   <%= form.text_field :destination, readonly: form.object.persisted? %>
+  </div>
 
   <div class="actions">
-    <%= form.submit 'Créer ma Demande !' %>
+    <%= form.submit 'Créer ma Demande !', class: 'ui button primary' %>
   </div>
 <% end %>

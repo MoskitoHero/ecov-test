@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <%= image_tag 'ecov_logo.png' %>
-    <%= yield %>
+    <div class="ui container">
+      <%= image_tag 'ecov_logo.png', class: 'ui fluid image' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

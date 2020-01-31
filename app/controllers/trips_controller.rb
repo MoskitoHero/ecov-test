@@ -30,7 +30,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       if @trip.save
         publish_to_rabbitmq
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to @trip, notice: 'Trajet créé avec succès.' }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new }
