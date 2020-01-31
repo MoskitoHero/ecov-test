@@ -98,7 +98,7 @@ RSpec.describe TripsController, type: :controller do
   describe 'PUT #start' do
     context 'with valid params' do
       let(:new_attributes) do
-        { }
+        {}
       end
 
       it 'updates the requested trip' do
@@ -127,7 +127,7 @@ RSpec.describe TripsController, type: :controller do
   describe 'PUT #cancel' do
     context 'with valid params' do
       let(:new_attributes) do
-        { }
+        {}
       end
 
       it 'updates the requested trip' do

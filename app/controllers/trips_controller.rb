@@ -96,6 +96,6 @@ class TripsController < ApplicationController
   end
 
   def publish_to_rabbitmq
-    Publisher.publish('fanout', { uid: @trip.uid, status: @trip.status })
+    Publisher.publish('fanout', uid: @trip.uid, status: @trip.status)
   end
 end

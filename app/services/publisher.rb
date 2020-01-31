@@ -24,7 +24,7 @@ class Publisher
   end
 
   # Needed to mock RabbitMQ in the specs
-  def self.connection=(connection)
-    @connection = connection
+  class << self
+    attr_writer :connection
   end
 end
