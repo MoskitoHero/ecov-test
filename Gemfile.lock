@@ -58,10 +58,15 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    amq-protocol (2.3.0)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bunny (2.14.3)
+      amq-protocol (~> 2.3, >= 2.3.0)
+    bunny-mock (1.7.0)
+      bunny (>= 1.7)
     byebug (11.1.1)
     capybara (3.31.0)
       addressable
@@ -214,6 +219,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bunny (>= 2.14.1)
+  bunny-mock
   byebug
   capybara
   jbuilder (~> 2.7)

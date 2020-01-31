@@ -2,4 +2,23 @@
 
 <h1>Bienvenue sur Ecov !</h1>
 
-<%= link_to 'New Trip', new_trip_path %>
+<%= link_to 'Nouveau Trajet', new_trip_path %>
+
+<h3>Liste de mes Trajets :</h3>
+
+<table>
+    <thead>
+        <th>Identifiant</th>
+        <th>Départ</th>
+        <th>Destination</th>
+        <th>Etat</th>
+    </thead>
+    <% @trips.each do |trip| %>
+    <tr>
+        <td><%= link_to trip.uid, trip %></td>
+        <td><%= trip.departure %>
+        <td><%= trip.destination %></td>
+        <td><%= trip.status %></td>
+    </tr>
+    <% end %>
+</table>

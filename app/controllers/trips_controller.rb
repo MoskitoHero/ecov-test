@@ -6,7 +6,9 @@ class TripsController < ApplicationController
 
   # GET /trips
   # GET /trips.json
-  def index; end
+  def index
+    @trips = Trip.all.order(created_at: :desc)
+  end
 
   # GET /trips/1
   # GET /trips/1.json
@@ -27,6 +29,7 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
+        publish_to_rabbitmq
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render :show, status: :created, location: @trip }
       else
@@ -41,7 +44,8 @@ class TripsController < ApplicationController
   def start
     respond_to do |format|
       if @trip.update(status: 'STARTED')
-        format.html { redirect_to @trip, notice: 'Trip was successfully started.' }
+        publish_to_rabbitmq
+        format.html { redirect_to @trip, notice: 'Trajet créé avec succès.' }
         format.json { render :show, status: :ok, location: @trip }
       else
         format.html { render :edit }
@@ -55,7 +59,8 @@ class TripsController < ApplicationController
   def cancel
     respond_to do |format|
       if @trip.update(status: 'CANCELLED')
-        format.html { redirect_to @trip, notice: 'Trip was successfully cancelled.' }
+        publish_to_rabbitmq
+        format.html { redirect_to trips_path, notice: 'Trajet annulé avec succès.' }
         format.json { render :show, status: :ok, location: @trip }
       else
         format.html { render :edit }
@@ -69,7 +74,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
+      format.html { redirect_to trips_url, notice: 'Trajet supprimé avec succès.' }
       format.json { head :no_content }
     end
   end
@@ -87,6 +92,10 @@ class TripsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def trip_params
-    params.fetch(:trip, {}).permit(:uid, :status)
+    params.fetch(:trip, {}).permit(:uid, :status, :departure, :destination)
+  end
+
+  def publish_to_rabbitmq
+    Publisher.publish('fanout', { uid: @trip.uid, status: @trip.status })
   end
 end

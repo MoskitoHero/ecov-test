@@ -134,13 +134,13 @@ RSpec.describe TripsController, type: :controller do
         trip = Trip.create! valid_attributes
         put :cancel, params: { trip_uid: trip.to_param, uid: trip.to_param, trip: new_attributes }, session: valid_session
         trip.reload
-        expect(response).to redirect_to(trip)
+        expect(response).to redirect_to(trips_path)
       end
 
       it 'redirects to the trip' do
         trip = Trip.create! valid_attributes
         put :cancel, params: { trip_uid: trip.to_param, uid: trip.to_param, trip: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(trip)
+        expect(response).to redirect_to(trips_path)
       end
     end
 

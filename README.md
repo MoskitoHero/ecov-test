@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Voilà mon travail.
 
-Things you may want to cover:
+## Utilisation
 
-* Ruby version
+``` sh
+docker-compose build .
+docker-compose up
+```
 
-* System dependencies
+L'appli est accessible à `http://0.0.0.0:5000` et le moniteur RabbitMQ à
+`http://0.0.0.0:8080`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+La seule liberté que j'ai prise, c'est d'appeler le modèle "Trip". Par
+expérience, je préfère coder Rails en anglais à cause des règles d'inflexion.

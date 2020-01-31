@@ -21,7 +21,9 @@ RSpec.feature 'Trips', type: :feature do
 
     click_link'Je monte en voiture !'
 
-    expect(page).to have_text('Trip was successfully started')
+    expect(page).to have_text('Trajet créé avec succès')
+    expect(page).to have_text('Poitiers')
+    expect(page).to have_text('Saint Benoit')
     expect(page).to have_text('STARTED')
   end
 
@@ -31,7 +33,7 @@ RSpec.feature 'Trips', type: :feature do
 
     click_link 'Annuler ma demande'
 
-    expect(page).to have_text('Trip was successfully cancelled')
-    expect(page).to have_text('CANCELLED')
+    expect(page).to have_text('Trajet annulé avec succès')
+    expect(page).to have_text('Nouveau Trajet')
   end
 end
