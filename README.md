@@ -1,4 +1,4 @@
-# README
+# Read Me
 
 Voilà mon travail.
 
@@ -10,7 +10,14 @@ docker-compose up
 ```
 
 L'appli est accessible à `http://0.0.0.0:5000` et le moniteur RabbitMQ à
-`http://0.0.0.0:8080`
+`http://0.0.0.0:8080` (login/pass : `guest/guest`).
 
-La seule liberté que j'ai prise, c'est d'appeler le modèle "Trip". Par
-expérience, je préfère coder Rails en anglais à cause des règles d'inflexion.
+## Remarques
+* J'ai préféré appeler le modèle "Trip". Par expérience, je préfère coder rails en
+ anglais à cause des règles d'inflexion.
+* Quand on annule un trajet, j'ai redirigé vers l'accueil... Je ne sais pas si
+  c'est ce qui était demandé. Mais ça me paraissait logique. De toutes façons,
+  l'état est visible dans la liste en index.
+* Tout n'est pas traduit, et/ou parfois c'est un peu à l'arrache de ce côté-là.
+  J'ai préféré me concentrer sur le code ruby.
+* J'ai fait aussi une petite UI succinte avec semantic-ui
