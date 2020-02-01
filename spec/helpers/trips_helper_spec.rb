@@ -2,16 +2,12 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the TripsHelper. For example:
-#
-# describe TripsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe TripsHelper, type: :helper do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  describe 'icon color' do
+    it 'returns a color depending on the given status code' do
+      expect(helper.icon_color('CREATED')).to eq('teal')
+      expect(helper.icon_color('STARTED')).to eq('green')
+      expect(helper.icon_color('CANCELLED')).to eq('grey')
+    end
+  end
 end
