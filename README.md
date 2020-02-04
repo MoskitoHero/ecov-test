@@ -5,7 +5,9 @@ Voilà mon travail.
 ## Utilisation
 
 ``` sh
-docker-compose build .
+docker-compose build
+docker-compose run rake db:setup
+docker-compose bundle exec rails webpacker:install
 docker-compose run web rake spec
 docker-compose up
 ```

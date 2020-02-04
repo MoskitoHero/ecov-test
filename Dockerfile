@@ -3,7 +3,7 @@ FROM ruby:2.6.5
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript tmux
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev ghostscript tmux
 
 RUN mkdir -p /app
 RUN mkdir -p /usr/local/nvm
@@ -11,9 +11,6 @@ WORKDIR /app
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
-
-RUN node -v
-RUN npm -v
 
 # Copy the Gemfile as well as the Gemfile.lock and install
 # the RubyGems. This is a separate step so the dependencies
@@ -37,5 +34,4 @@ EXPOSE 5000
 # The main command to run when the container starts. Also
 # tell the Rails dev server to bind to all interfaces by
 # default.
-# CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
 CMD ["overmind", "start"]
